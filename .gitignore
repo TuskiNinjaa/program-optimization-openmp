@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+# Extracted folders from .zip
+**/Entradas
+**/Saidas
+
 # Object files
 *.o
 *.ko
