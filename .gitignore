@@ -6,8 +6,8 @@
 **/Saidas
 
 # Compiled files
-esparso_seq
-esparso_par
+*esparso_seq
+*esparso_par
 
 # Object files
 *.o
