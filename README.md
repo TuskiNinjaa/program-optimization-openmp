@@ -21,7 +21,7 @@ gcc esparso_seq.c -fopenmp -o esparso_seq -Wall
 gcc esparso_par.c -fopenmp -o esparso_par -Wall
 ```
 
-# Running FIRST testcase
+# Running the first testcase
 ```console
 ./esparso_seq ./Entradas/e1.txt ./Saidas/par_s1.txt
 ```
