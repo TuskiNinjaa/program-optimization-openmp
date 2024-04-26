@@ -12,3 +12,13 @@ gcc esparso_seq.c -fopenmp -o esparso_seq -Wall
 ```console
 gcc esparso_par.c -fopenmp -o esparso_par -Wall
 ```
+
+# Running codes
+
+```console
+./esparso_seq
+```
+
+```console
+./esparso_par
+```
