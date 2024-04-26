@@ -4,6 +4,14 @@ The objective of this work is to use the OpenMP library to parallelize a sequent
 # Enviroment
 - GCC - Version 13.2.0
 
+# Unzip inputs and outputs files
+```console
+unzip Entradas.zip
+```
+```console
+unzip Saidas.zip
+```
+
 # Compiling codes
 ```console
 gcc esparso_seq.c -fopenmp -o esparso_seq -Wall
