@@ -3,6 +3,7 @@ The objective of this work is to use the OpenMP library to parallelize a sequent
 
 # Enviroment
 - GCC - Version 13.2.0
+- UnZip - Version 6.00
 
 # Unzip inputs and outputs files
 ```console
