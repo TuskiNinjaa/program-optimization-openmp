@@ -1,7 +1,11 @@
-// Programa sequencial
+// Grupo:
+// Vitor Yuske Watanabe - 2020.1905.058-4
+
+// ----------------------------------------------------------------------------
+// Programa paralelo
 // Representa um vetor esparso em um formato compacto
-// Compilar com: gcc esparso_seq.c -fopenmp -o esparso_seq -Wall
-// Executar por linha de comando: ./esparso_seq arquivo_entrada arquivo_saída
+// Compilar com: gcc esparso_par.c -fopenmp -o esparso_par -Wall
+// Executar por linha de comando: ./esparso_par arquivo_entrada arquivo_saída
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,9 +58,14 @@ void aloca_vetores_saida()
 void conta_elementos_dif0()
 {
 	m = 0;
-	for (int i = 0; i < n; i++)
-		if (vetIn[i] != 0)
-			m++;
+
+    #pragma omp parallel for schedule(static)
+    for (int i = 0; i < n; i++)
+    {
+        if (vetIn[i] != 0){
+            m = vetIn[i];
+        }
+    }
 }
 
 // ----------------------------------------------------------------------------
@@ -99,8 +108,7 @@ void finaliza(char* nome_arq_saida)
 // ----------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-	char nome_arq_entrada[100],
-		  nome_arq_saida[100] ;
+	char nome_arq_entrada[100], nome_arq_saida[100] ;
 
 	if(argc != 3)
 	{

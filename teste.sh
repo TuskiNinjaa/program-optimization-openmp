@@ -1,9 +1,15 @@
 #!/bin/bash
 
-gcc esparso_seq.c -fopenmp -o esparso_seq -Wall
+gcc esparso_seq.c -fopenmp -o esparso_seq.o -Wall
+gcc esparso_par.c -fopenmp -o esparso_par.o -Wall
 
-./esparso_seq ./Entradas/e1.txt ./Saidas/par_s1.txt
-./esparso_seq ./Entradas/e2.txt ./Saidas/par_s2.txt
-./esparso_seq ./Entradas/e3.txt ./Saidas/par_s3.txt
-./esparso_seq ./Entradas/e4.txt ./Saidas/par_s4.txt
-./esparso_seq ./Entradas/e5.txt ./Saidas/par_s5.txt
+for i in {1..5}
+do
+    ./esparso_seq.o ./Entradas/e$i.txt ./Saidas/s$i.txt
+    ./esparso_par.o ./Entradas/e$i.txt ./Saidas/par_s$i.txt
+done
+
+for i in {1..5}
+do
+    cmp --silent ./Saidas/par_s$i.txt ./Saidas/s$i.txt && echo "s$i: Files are EQUAL" || echo "s$i: Files are DIFFERENT"
+done
