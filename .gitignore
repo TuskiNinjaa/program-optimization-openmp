@@ -5,10 +5,6 @@
 **/Entradas
 **/Saidas
 
-# Compiled files
-*esparso_seq
-*esparso_par
-
 # Object files
 *.o
 *.ko
