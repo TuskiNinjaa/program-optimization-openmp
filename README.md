@@ -15,19 +15,18 @@ unzip Saidas.zip
 
 # Compiling codes
 ```console
-gcc esparso_seq.c -fopenmp -o esparso_seq -Wall
+gcc esparso_seq.c -fopenmp -o esparso_seq.o -Wall
 ```
-
 ```console
-gcc esparso_par.c -fopenmp -o esparso_par -Wall
+gcc esparso_par.c -fopenmp -o esparso_par.o -Wall
 ```
 
 # Running the first testcase
 ```console
-./esparso_seq ./Entradas/e1.txt ./Saidas/par_s1.txt
+./esparso_seq.o ./Entradas/e1.txt ./Saidas/par_s1.txt
 ```
 ```console
-./esparso_par ./Entradas/e1.txt ./Saidas/par_s1.txt
+./esparso_par.o ./Entradas/e1.txt ./Saidas/par_s1.txt
 ```
 
 # Test script
