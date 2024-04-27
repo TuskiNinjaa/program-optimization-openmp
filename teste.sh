@@ -11,5 +11,5 @@ done
 
 for i in {1..5}
 do
-    cmp --silent ./Saidas/par_s$i.txt ./Saidas/s$i.txt && echo "s$i: Files are EQUAL" || echo "s$i: Files are DIFFERENT"
+    cmp --silent ./Saidas/par_s$i.txt ./Saidas/s$i.txt && echo "Test case $i: Files are EQUAL" || echo "Test case $i: Files are DIFFERENT"
 done
