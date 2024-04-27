@@ -13,12 +13,15 @@
 #include <omp.h>
 
 // ----------------------------------------------------------------------------
+// Struct auxiliar
+
 // Variáveis globais
 int n,	// Número de elementos do vetor de entrada
     m,	// Número de elementos diferentes de 0 do vetor de entrada e tamanho dos vetores de saída
     *vetIn,	// Vetor de entrada com n dados esparsos
     *valor,	// Vetor de saída com valores dos m dados diferentes de 0
-    *posicao;	// Vetor de saída com posição no vetor de entrada dos m dados diferentes de 0
+    *posicao,	// Vetor de saída com posição no vetor de entrada dos m dados diferentes de 0
+    *contagem;
 
 // ----------------------------------------------------------------------------
 void inicializa(char* nome_arq_entrada)
@@ -44,6 +47,11 @@ void inicializa(char* nome_arq_entrada)
 		fscanf(arq_entrada, "%d", &(vetIn[i]));
 
 	fclose(arq_entrada);
+
+    // Inicializa vetor auxiliar
+    contagem = malloc((omp_get_max_threads()+1) * sizeof(int));
+	for (int i = 0; i < omp_get_max_threads()+1; i++)
+        contagem[i] = 0;
 }
 
 // ----------------------------------------------------------------------------
@@ -57,28 +65,40 @@ void aloca_vetores_saida()
 // ----------------------------------------------------------------------------
 void conta_elementos_dif0()
 {
-	m = 0;
+    int j = 0;
 
-    #pragma omp parallel for schedule(static)
+    // Conta paralelamente quantos elementos diferentes de zero estão na chunk de cada thread
+    #pragma omp parallel for schedule(static) firstprivate(j)
     for (int i = 0; i < n; i++)
     {
-        if (vetIn[i] != 0){
-            m = vetIn[i];
-        }
+        if (vetIn[i] != 0)
+            contagem[omp_get_thread_num()+1] = ++j;
     }
+
+    // Incrementa sequencialmente as contagens no vetor contagem
+    for (int i = 1; i < 1 + omp_get_max_threads(); i++)
+        contagem[i] += contagem[i-1];
+
+    // O último elemento do vetor contagem armazena a quantidade de elementos diferentes de zero
+    m = contagem[omp_get_max_threads()];
 }
 
 // ----------------------------------------------------------------------------
 void compacta_vetor()
 {
 	int j = 0;
-	for (int i = 0; (i < n) && (j < m); i++)
+
+    // Atribui paralelamente os valores no vetor valor e posicao, utilizando o vetor auxiliar contagem
+    #pragma omp parallel for schedule(static) firstprivate(j)
+	for (int i = 0; i < n; i++)
+    {
 		if (vetIn[i] != 0)
 		{
-			valor[j]   = vetIn[i];
-			posicao[j] = i;
+			valor[contagem[omp_get_thread_num()] + j] = vetIn[i];
+			posicao[contagem[omp_get_thread_num()] + j] = i;
 			j++;
 		}
+    }
 }
 
 // ----------------------------------------------------------------------------
