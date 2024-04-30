@@ -1,11 +1,12 @@
-// Grupo:
-// Vitor Yuske Watanabe - 2020.1905.058-4
-
 // ----------------------------------------------------------------------------
-// Programa paralelo
+// Nome dos alunos do grupo:
+// Vitor Yuske Watanabe - 2020.1905.058-4
+// Raissa Rinaldi Yoshioka - 2020.1905.049-5
+// ----------------------------------------------------------------------------
+// Programa paralelo:
 // Representa um vetor esparso em um formato compacto
-// Compilar com: gcc esparso_par.c -fopenmp -o esparso_par -Wall
-// Executar por linha de comando: ./esparso_par arquivo_entrada arquivo_saída
+// Compilar com: gcc esparso_par.c -fopenmp -o esparso_par.o -Wall
+// Executar por linha de comando: ./esparso_par.o arquivo_entrada arquivo_saída
 
 #include <stdio.h>
 #include <stdlib.h>
