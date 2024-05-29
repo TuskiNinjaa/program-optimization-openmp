@@ -39,16 +39,16 @@ chmod +x teste.sh
 ```
 ## Example of output after running the test script
 ```console
-./esparso_seq.o n=          20: tempo= 0.000000 + 0.000000 = 0.000001 s
-./esparso_par.o n=          20: tempo= 0.000250 + 0.000002 = 0.000252 s
-./esparso_seq.o n=         100: tempo= 0.000000 + 0.000000 = 0.000000 s
-./esparso_par.o n=         100: tempo= 0.000198 + 0.000002 = 0.000200 s
-./esparso_seq.o n=     1000000: tempo= 0.001202 + 0.001430 = 0.002632 s
-./esparso_par.o n=     1000000: tempo= 0.000663 + 0.000132 = 0.000796 s
-./esparso_seq.o n=    10000000: tempo= 0.012307 + 0.014931 = 0.027238 s
-./esparso_par.o n=    10000000: tempo= 0.004557 + 0.001312 = 0.005869 s
-./esparso_seq.o n=   100000000: tempo= 0.118854 + 0.143244 = 0.262098 s
-./esparso_par.o n=   100000000: tempo= 0.037863 + 0.013575 = 0.051439 s
+./esparso_seq.o n=          20: tempo= 0.000000 + 0.000000 = 0.000000 s
+./esparso_par.o n=          20: tempo= 0.000204 + 0.000002 = 0.000206 s
+./esparso_seq.o n=         100: tempo= 0.000000 + 0.000000 = 0.000001 s
+./esparso_par.o n=         100: tempo= 0.000518 + 0.000002 = 0.000520 s
+./esparso_seq.o n=     1000000: tempo= 0.001462 + 0.001431 = 0.002893 s
+./esparso_par.o n=     1000000: tempo= 0.000451 + 0.000154 = 0.000605 s
+./esparso_seq.o n=    10000000: tempo= 0.013003 + 0.013211 = 0.026214 s
+./esparso_par.o n=    10000000: tempo= 0.001358 + 0.001875 = 0.003233 s
+./esparso_seq.o n=   100000000: tempo= 0.123426 + 0.132172 = 0.255598 s
+./esparso_par.o n=   100000000: tempo= 0.012012 + 0.015006 = 0.027018 s
 Test case 1: Files are EQUAL
 Test case 2: Files are EQUAL
 Test case 3: Files are EQUAL
